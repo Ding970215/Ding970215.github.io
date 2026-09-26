@@ -6,8 +6,14 @@
 - 網站名稱：**DC WOODBALL**
 - 選手姓名：**陳定淳**（Chen Ding-Chun）
 - GitHub 使用者：**Ding970215**
-- Repository 名稱：**woodball**
-- GitHub Pages 網址：<https://ding970215.github.io/woodball/>
+- Repository 名稱：**Ding970215.github.io**
+- GitHub Pages 網址：<https://ding970215.github.io/>
+
+> ⚠️ **為何 repo 不叫 `woodball`？**
+> GitHub 的規則：網站要出現在 `https://<使用者>.github.io`（**根網址、沒有路徑**），
+> repo 就必須**剛好叫** `<使用者>.github.io`，且放在你本人名下。
+> 如果 repo 叫 `woodball`，網址會變成 `https://ding970215.github.io/woodball`。
+> 你要的是固定網址 `https://ding970215.github.io`，所以 repo 名稱取 `Ding970215.github.io`。
 
 ---
 
@@ -35,32 +41,41 @@ woodball/
 
 ## 部署到 GitHub Pages
 
-### 方式 A：從現有資料夾直接建立新 repo（最快）
+### 方式 A：建立新的使用者站 repo（目前採用的做法）
 
 ```powershell
 cd woodball
-git init
+git init -b main
 git add .
 git commit -m "feat: DC WOODBALL woodball personal website"
-git branch -M main
-git remote add origin https://github.com/Ding970215/woodball.git
+git remote add origin https://github.com/Ding970215/Ding970215.github.io.git
 git push -u origin main
+```
+
+一次搞定（有 `gh` 時）：
+
+```powershell
+gh repo create Ding970215.github.io --public --source=. --push
 ```
 
 ### 方式 B：已經有 repo，只要把網頁放進去
 
 把 `woodball/` 資料夾內的**所有內容**複製到 repo 根目錄，再 push。
+（網站檔必須在 repo 的**根目錄**，不是子資料夾。）
 
 ### 開啟 Pages
 
-1. 到 GitHub → 進 `woodball` repo → **Settings**
+1. 到 GitHub → 進 `Ding970215.github.io` repo → **Settings**
 2. 左側選單 **Pages**
 3. **Source** 選 `Deploy from a branch`
 4. **Branch** 選 `main` ／ **Folder** 選 `/ (root)`
 5. 按 **Save**
 
 約 1～2 分鐘後網站上線：
-`https://<你的帳號>.github.io/woodball/`
+`https://Ding970215.github.io`
+
+> `*.github.io` 使用者站是**例外**：GitHub 預設就會自動開啟 Pages，push 完通常不用再手動設定。
+> 已附 `.nojekyll`，Jekyll 不會介入處理檔案。
 
 > 建議之後把網址改成自訂網域：在 **Settings → Pages → Custom domain** 填入網域，
 > 並在 DNS 加一筆 `CNAME` 指向 `<帳號>.github.io`。
