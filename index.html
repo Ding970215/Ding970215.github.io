@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>DC WOODBALL｜木球個人網站</title>
+<meta name="description" content="DC WOODBALL — 木球選手個人網站。木球社社長、全中運經歷、比賽紀錄與木球精神。American Athletic × Woodball。" />
+<meta name="author" content="陳定淳 (Ding970215)" />
+<meta name="theme-color" content="#0a0a0b" />
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="DC WOODBALL｜木球個人網站" />
+<meta property="og:description" content="木球社社長・全中運選手・比賽紀錄。美式競技 × 木球。" />
+<meta property="og:image" content="assets/img/og-cover.svg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="DC WOODBALL｜木球個人網站" />
+<meta name="twitter:image" content="assets/img/og-cover.svg" />
+
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link rel="apple-touch-icon" href="assets/img/favicon.svg" />
+
+<!-- 首頁封面照片（LCP 優先載入） -->
+<link rel="preload" as="image" href="assets/img/hero.jpg" fetchpriority="high" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__ball"><span class="loader__ball-x"></span></div>
+    <div class="loader__logo">DC<span>WOODBALL</span></div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <div class="loader__pct"><span id="loaderPct">0</span>%</div>
+  </div>
+</div>
+
+<!-- ============ CURSOR (desktop) ============ -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav__wrap">
+    <a class="nav__brand" href="#home" aria-label="DC Woodball 首頁">
+      <span class="nav__monogram">DC</span>
+      <span class="nav__brand-txt">WOODBALL<em>木球</em></span>
+    </a>
+
+    <nav class="nav__links" id="navLinks" aria-label="主要選單">
+      <a href="#woodball"><i>01</i>我的木球</a>
+      <a href="#president"><i>02</i>社社長</a>
+      <a href="#games"><i>03</i>全中運</a>
+      <a href="#records"><i>04</i>戰績</a>
+      <a href="#spirit"><i>05</i>精神</a>
+      <a href="#gallery"><i>06</i>相片</a>
+      <a href="#about"><i>07</i>關於</a>
+      <a href="#links"><i>08</i>連結</a>
+    </nav>
+
+    <div class="nav__right">
+      <a class="nav__gh" href="https://github.com/Ding970215" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.38-3.88-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <i class="nav__progress" id="navProgress"></i>
+</header>
+
+<main>
+
+<!-- ============ 01 HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero__bg" aria-hidden="true"></div>
+  <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero__halftone" aria-hidden="true" data-par="0.14"></div>
+  <div class="hero__stripes" aria-hidden="true" data-par="0.07">
+    <i></i><i></i><i></i><i></i><i></i>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__tape hero__tape--l">ATHLETIC DIVISION</div>
+    <div class="hero__tape hero__tape--r">EST. 2019 · TAIWAN</div>
+
+    <p class="hero__eyebrow" data-anim="fade-up">
+      <span class="dot"></span>WOODBALL ATHLETE&nbsp;/&nbsp;CLUB PRESIDENT&nbsp;/&nbsp;NATIONAL GAMES
+    </p>
+
+    <h1 class="hero__title">
+      <span class="line line--1" data-anim="clip"><span class="line__in">DC</span></span>
+      <span class="line line--2" data-anim="clip"><span class="line__in">WOOD<em>BALL</em></span></span>
+      <span class="hero__badge">槌球 · WOODBALL</span>
+    </h1>
+
+    <div class="hero__meta" data-anim="fade-up" data-delay="200">
+      <div class="hero__name">
+        <b>陳定淳</b>
+        <span>CHEN DING-CHUN · 木球社社長 · 全中運選手</span>
+      </div>
+      <div class="hero__num" aria-hidden="true">
+        <span>07</span>
+        <small>JERSEY</small>
+      </div>
+    </div>
+
+    <p class="hero__desc" data-anim="fade-up" data-delay="320">
+      以美式競技的強度對待每一場木球。從社團基層到全國賽場，<br class="br-pc" />
+      我用球桿丈量距離、用汗水兌換成績。
+    </p>
+
+    <div class="hero__cta" data-anim="fade-up" data-delay="440">
+      <a href="#woodball" class="btn btn--gold" data-magnetic>
+        <span>開始介紹</span>
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#records" class="btn btn--ghost" data-magnetic>
+        <span>比賽紀錄</span>
+      </a>
+    </div>
+
+    <div class="hero__stats" data-anim="fade-up" data-delay="560">
+      <div class="hero__stat"><b data-count="8">0</b><span>年球齡</span></div>
+      <div class="hero__stat"><b data-count="1">0</b><span>全國前三</span></div>
+      <div class="hero__stat"><b data-count="36">0</b><span>場全國賽</span></div>
+      <div class="hero__stat"><b data-count="120">0</b><span>場比賽</span></div>
+    </div>
+  </div>
+
+  <a href="#woodball" class="hero__scroll" aria-label="往下捲動">
+    <span class="hero__scroll-txt">SCROLL</span>
+    <i class="hero__scroll-line"></i>
+  </a>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__grp">
+      <span>WOODBALL</span><i>★</i><span>木球</span><i>★</i><span>SPORTSmanship</span><i>★</i>
+      <span>全中運</span><i>★</i><span>CLUB PRESIDENT</span><i>★</i><span>木球人生</span><i>★</i>
+    </div>
+    <div class="marquee__grp">
+      <span>WOODBALL</span><i>★</i><span>木球</span><i>★</i><span>SPORTSmanship</span><i>★</i>
+      <span>全中運</span><i>★</i><span>CLUB PRESIDENT</span><i>★</i><span>木球人生</span><i>★</i>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 02 我的木球介紹 ============ -->
+<section class="sec sec--light" id="woodball">
+  <div class="wrap">
+    <header class="sec__head" data-anim="fade-up">
+      <p class="sec__idx"><b>01</b> / MY WOODBALL</p>
+      <h2 class="sec__title">我的<span class="hl">木球</span>介紹</h2>
+      <p class="sec__lead">
+        木球（Woodball）是一項融合棒球揮擊邏輯與高爾夫推桿技巧的球類運動。
+        場上沒有守備球員，你面對的只有一顆球、兩道界線，和無盡的計算。
+      </p>
+    </header>
+
+    <div class="wb">
+      <div class="wb__main">
+        <article class="card card--dark" data-anim="fade-up" data-tilt>
+          <span class="card__no">W</span>
+          <h3>Woodball 是什麼</h3>
+          <p>木球起源於 1970 年代的南非，後傳入台灣推廣。球場由兩個扇形區（backswing area）與中間的共享得分區（shared fairway）構成，球員以球桿將球擊向遠端木樁，越過對方得分線後反向回擊。</p>
+          <ul class="tick">
+            <li>無守備、全靠角度與力道控制</li>
+            <li>球體表面有旋轉紋路，飛行路徑會產生偏移</li>
+            <li>一場比賽＝多局累積比分，體能與心理都是考驗</li>
+          </ul>
+        </article>
+
+        <article class="card card--dark" data-anim="fade-up" data-delay="100" data-tilt>
+          <span class="card__no">E</span>
+          <h3>裝備與球感</h3>
+          <p>我的主力球桿是木製槌頭配碳纖維桿身，重量集中在頭部，擊球瞬間能量傳遞更直接。球鞋選擇抓地力強的釘鞋，下盤穩定是長距離推進的關鍵。</p>
+          <ul class="tick">
+            <li>球桿重量與長度依身高、握法客製</li>
+            <li>每天固定 200 顆揮桿練習</li>
+            <li>用手機慢動作錄影檢查擊球瞬間</li>
+          </ul>
+        </article>
+      </div>
+
+      <aside class="wb__side">
+        <div class="card card--gold" data-anim="fade-up" data-delay="60">
+          <h3>為我選擇木球</h3>
+          <p>它不像一般球類有「身體天賦」當藉口。每一分都是自己練出來的，每一場輸贏都對得起自己的努力。這種純粹的自主性，正是我著迷的地方。</p>
+          <div class="wb__quote">
+            <span class="wb__quote-mark">“</span>
+            <p>球場是公平的，因為它只回應你的練習量。</p>
+          </div>
+        </div>
+
+        <div class="gear" data-anim="fade-up" data-delay="140">
+          <div class="gear__row"><span>球桿</span><b>Wooden mallet</b></div>
+          <div class="gear__row"><span>主力球</span><b>38g · 6 吋標線球</b></div>
+          <div class="gear__row"><span>鞋款</span><b>釘鞋 · 抓地系</b></div>
+          <div class="gear__row"><span>練習量</span><b>每日 200+ 揮桿</b></div>
+          <div class="gear__row"><span>慣用手</span><b>右手 · 內角推桿</b></div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 木球社社長經歷 ============ -->
+<section class="sec sec--dark" id="president">
+  <div class="sec__mesh" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="sec__head sec__head--light" data-anim="fade-up">
+      <p class="sec__idx"><b>02</b> / CLUB PRESIDENT</p>
+      <h2 class="sec__title">木球社<span class="hl">社長</span>經歷</h2>
+      <p class="sec__lead">從社團幹事到扛下社長的位置，我學會的不是怎麼贏，而是怎麼讓一群人一起變強。</p>
+    </header>
+
+    <div class="tl">
+      <div class="tl__line" aria-hidden="true"><i class="tl__fill"></i></div>
+
+      <div class="tl__item" data-anim="fade-up">
+        <div class="tl__dot"></div>
+        <div class="tl__yr"> YEAR <b>108</b></div>
+        <div class="card card--outline">
+          <h3>入社 · 菜鳥的第一場社內賽</h3>
+          <p>高一入學加入木球社，第一次社內練習就因為握桿姿勢錯誤把球打飛出界。學長說了一句「重來」，我從那天開始每天放學留下來加練。</p>
+          <span class="tl__tag">TAG · ROOKIE</span>
+        </div>
+      </div>
+
+      <div class="tl__item" data-anim="fade-up">
+        <div class="tl__dot"></div>
+        <div class="tl__yr"> YEAR <b>109</b></div>
+        <div class="card card--outline">
+          <h3>晉升 · 社團幹事 / 隊長</h3>
+          <p>接下隊長一職，負責訓練排程、器材維護與比賽報名。帶領社團拿下縣內賽團體亞軍，也開始練習如何當別人的榜樣。</p>
+          <span class="tl__tag">TAG · CAPTAIN</span>
+        </div>
+      </div>
+
+      <div class="tl__item" data-anim="fade-up">
+        <div class="tl__dot tl__dot--gold"></div>
+        <div class="tl__yr"> YEAR <b>110</b></div>
+        <div class="card card--outline card--hl">
+          <h3>就任 · 木球社社長</h3>
+          <p>正式接任社團負責人。做的事很雜：招募新生、寫企劃、找場地、跟教練談訓練量、拉贊助。學期裡最常深夜修改檢討報告，但看到社團人數從 12 人成長到 30 人，覺得都值得。</p>
+          <span class="tl__tag">TAG · PRESIDENT</span>
+        </div>
+      </div>
+
+      <div class="tl__item" data-anim="fade-up">
+        <div class="tl__dot"></div>
+        <div class="tl__yr"> YEAR <b>111</b></div>
+        <div class="card card--outline">
+          <h3>拓展 · 社區推廣與館校交流</h3>
+          <p>推動社團走進社區，與鄰近國小舉辦友誼賽，也帶隊參與北區分區挑戰賽。開始把比賽經驗整理成教材，交接給學弟妹。</p>
+          <span class="tl__tag">TAG · OUTREACH</span>
+        </div>
+      </div>
+
+      <div class="tl__item" data-anim="fade-up">
+        <div class="tl__dot"></div>
+        <div class="tl__yr"> YEAR <b>112+</b></div>
+        <div class="card card--outline">
+          <h3>交接 · 傳承與紀錄化</h3>
+          <p>建立社團訓練排程表、比賽檢討流程與影音紀錄，讓社團能持續運作。目標是讓 Woodball 從「有社」變成「有文化」。</p>
+          <span class="tl__tag">TAG · LEGACY</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pres-stats">
+      <div class="pres-stat" data-anim="fade-up"><b data-count="3">0</b><span>屆社團幹部</span></div>
+      <div class="pres-stat" data-anim="fade-up" data-delay="80"><b data-count="30">0</b><span>社員經營</span></div>
+      <div class="pres-stat" data-anim="fade-up" data-delay="160"><b data-count="2">0</b><span>次縣內亞軍</span></div>
+      <div class="pres-stat" data-anim="fade-up" data-delay="240"><b data-count="5">0</b><span>屆全國賽</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 全中運經歷 ============ -->
+<section class="sec sec--gold" id="games">
+  <div class="wrap">
+    <header class="sec__head sec__head--dark" data-anim="fade-up">
+      <p class="sec__idx"><b>03</b> / NATIONAL MIDDLE SCHOOL GAMES</p>
+      <h2 class="sec__title">全中運<span class="hl hl--ink">經歷</span></h2>
+      <p class="sec__lead">全國中等學生運動會。全國最強的學生賽事之一，也是我確認「我想一直打球」的轉捩點。</p>
+    </header>
+
+    <div class="games">
+      <div class="games__hero" data-anim="fade-up" data-tilt>
+        <div class="games__medal">
+          <div class="medal">
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="52" fill="none" stroke="#0a0a0b" stroke-width="2" opacity=".3"/>
+              <circle cx="60" cy="60" r="44" fill="none" stroke="#0a0a0b" stroke-width="1" opacity=".25"/>
+              <path d="M60 22 L70 50 L100 50 L77 67 L86 96 L60 79 L34 96 L43 67 L20 50 L50 50 Z" fill="#0a0a0b"/>
+            </svg>
+            <span class="medal__ribbon"></span>
+          </div>
+          <div class="games__medal-txt">
+            <b data-count="2">0</b>
+            <p>全國前三名<br />FINALIST</p>
+          </div>
+        </div>
+        <ul class="games__list">
+          <li><span>賽事</span><b>全國中等學生運動會 · 木球個人賽</b></li>
+          <li><span>項目</span><b>個人四角／高球區 全能</b></li>
+          <li><span>成績</span><b class="gold-ink">全國前 3 名 · 晉級決賽</b></li>
+          <li><span>性質</span><b>全國級 · 學制最高級正式大賽</b></li>
+        </ul>
+      </div>
+
+      <div class="games__story">
+        <article class="note" data-anim="fade-up">
+          <h3>「第一次輸在觀念」</h3>
+          <p>全國賽前的練習賽裡，我的直線推桿很穩，但一到交叉界線就失分。教練看完比賽錄影只說了一句：<em>「你一直在用蠻力，沒在用角度。」</em>回去之後我重新計算每一球的出手角度，把練桿時間一半改成練思考。</p>
+        </article>
+        <article class="note" data-anim="fade-up" data-delay="100">
+          <h3>「決賽的第五局」</h3>
+          <p>記憶最深的一局。第五局最後兩球連續失誤，觀戰的學弟在場邊喊加油。最後一球我選擇保守推進，拿到關鍵分。贏球不是靠神技，是靠沒有放棄下一球。</p>
+        </article>
+        <article class="note" data-anim="fade-up" data-delay="200">
+          <h3>「帶回社團的禮物」</h3>
+          <p>全國賽結束後，我把比賽用球、戰術筆記跟訓練表全部帶回社團，開了四場社內分享會。我希望下一屆的人不需要重新摸索一次。</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 比賽紀錄 ============ -->
+<section class="sec sec--dark sec--pad" id="records">
+  <div class="sec__mesh" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="sec__head sec__head--light" data-anim="fade-up">
+      <p class="sec__idx"><b>04</b> / RECORDS</p>
+      <h2 class="sec__title">比賽<span class="hl">紀錄</span></h2>
+      <p class="sec__lead">每一場比賽都是一份可以累積的資料。以下為近幾年主要賽事成績。</p>
+    </header>
+
+    <div class="filter" data-anim="fade-up" role="tablist" aria-label="賽事篩選">
+      <button class="filter__btn is-on" data-filter="all" role="tab" aria-selected="true">ALL</button>
+      <button class="filter__btn" data-filter="national" role="tab" aria-selected="false">全國</button>
+      <button class="filter__btn" data-filter="county" role="tab" aria-selected="false">縣市</button>
+      <button class="filter__btn" data-filter="club" role="tab" aria-selected="false">社團</button>
+    </div>
+
+    <div class="tbl-wrap" data-anim="fade-up">
+      <table class="tbl" id="recTable">
+        <caption class="sr-only">比賽紀錄列表</caption>
+        <thead>
+          <tr>
+            <th scope="col">賽事名稱</th>
+            <th scope="col">類別</th>
+            <th scope="col">項目</th>
+            <th scope="col">名次</th>
+            <th scope="col">年度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-cat="national"><td>全國中等學生運動會</td><td><span class="pill pill--gold">全國</span></td><td>個人賽 · 全能</td><td><b class="rank rank--top">第 2 名</b></td><td>111</td></tr>
+          <tr data-cat="national"><td>全國中等學生運動會</td><td><span class="pill pill--gold">全國</span></td><td>個人賽 · 全能</td><td><b class="rank rank--top">第 3 名</b></td><td>110</td></tr>
+          <tr data-cat="national"><td>全國木球錦標賽</td><td><span class="pill pill--gold">全國</span></td><td>高中組個人</td><td><b class="rank">第 5 名</b></td><td>112</td></tr>
+          <tr data-cat="national"><td>北區分區挑戰賽</td><td><span class="pill pill--gold">全國</span></td><td>團體賽</td><td><b class="rank">第 4 名</b></td><td>111</td></tr>
+          <tr data-cat="county"><td>縣運動會 · 木球賽</td><td><span class="pill">縣市</span></td><td>高中組個人</td><td><b class="rank rank--top">第 1 名</b></td><td>112</td></tr>
+          <tr data-cat="county"><td>縣運動會 · 木球賽</td><td><span class="pill">縣市</span></td><td>高中組個人</td><td><b class="rank rank--top">第 1 名</b></td><td>110</td></tr>
+          <tr data-cat="county"><td>縣運 · 社團團體賽</td><td><span class="pill">縣市</span></td><td>團體總匯</td><td><b class="rank">第 2 名</b></td><td>109</td></tr>
+          <tr data-cat="club"><td>木球社社內挑戰賽</td><td><span class="pill pill--dark">社團</span></td><td>個人挑戰</td><td><b class="rank rank--top">冠軍</b></td><td>112</td></tr>
+          <tr data-cat="club"><td>社區友誼邀請賽</td><td><span class="pill pill--dark">社團</span></td><td>館校交流</td><td><b class="rank">第 3 名</b></td><td>111</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl__empty" id="tblEmpty" hidden>此分類目前沒有紀錄。</p>
+    </div>
+
+    <div class="rec-cards">
+      <div class="rc" data-anim="fade-up">
+        <span class="rc__ico">🏆</span><b>全國前三 ×2</b><p>全中運個人賽全國第 2、第 3 名</p>
+      </div>
+      <div class="rc" data-anim="fade-up" data-delay="80">
+        <span class="rc__ico">🎯</span><b>縣運冠軍 ×2</b><p>高中組個人冠軍</p>
+      </div>
+      <div class="rc" data-anim="fade-up" data-delay="160">
+        <span class="rc__ico">🏟</span><b>全國賽 5 屆</b><p>個人與團體賽事經驗</p>
+      </div>
+      <div class="rc" data-anim="fade-up" data-delay="240">
+        <span class="rc__ico">📈</span><b>命中率 78%</b><p>近 30 場平均一壘安成功率</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 木球精神 ============ -->
+<section class="sec sec--light" id="spirit">
+  <div class="wrap">
+    <header class="sec__head" data-anim="fade-up">
+      <p class="sec__idx"><b>05</b> / SPIRIT OF WOODBALL</p>
+      <h2 class="sec__title">木球<span class="hl">精神</span></h2>
+      <p class="sec__lead">木球不像籃球有滿場歡呼，也不像棒球有九局。它安靜、孤立、只有你跟球。也就是這樣，最能看見一個人真正的樣子。</p>
+    </header>
+
+    <div class="pillars">
+      <article class="pillar" data-anim="fade-up" data-tilt>
+        <span class="pillar__no">01</span>
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="18" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="32" r="5" fill="currentColor"/><path d="M32 4v10M32 50v10M4 32h10M50 32h10M12 12l7 7M45 45l7 7M52 12l-7 7M19 45l-7 7" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>專注</h3>
+        <p>一場比賽裡你可能只有幾十秒真正決定勝負。球員必須在吵雜中把注意力壓縮成一個點——目標線、角度、力道，只有這三件事。</p>
+      </article>
+
+      <article class="pillar" data-anim="fade-up" data-delay="80" data-tilt>
+        <span class="pillar__no">02</span>
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M8 46 L32 8 L56 46" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 46 L32 28 L44 46" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="8" r="3.5" fill="currentColor"/></svg>
+        </div>
+        <h3>堅持</h3>
+        <p>訓練的日子很長、回報很慢。木球教會我的是「今天沒有進步也還是要來」。差距都是這樣一天一天磨出來的。</p>
+      </article>
+
+      <article class="pillar" data-anim="fade-up" data-delay="160" data-tilt>
+        <span class="pillar__no">03</span>
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="22" r="12" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 58c0-12 11-20 24-20s24 8 24 20" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>尊重</h3>
+        <p>球場上只有你跟對手，但對手的每一球都值得被認真對待。先尊重規則、尊重場地、尊重隊友，成績才有意義。</p>
+      </article>
+
+      <article class="pillar" data-anim="fade-up" data-delay="240" data-tilt>
+        <span class="pillar__no">04</span>
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><path d="M32 4l7 18 19 1-15 12 5 19-16-10-16 10 5-19L6 23l19-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>企圖心</h3>
+        <p>永遠想再推進一公尺。球停在界線上不是結束，是「再試一次」的開始。強者不是不會失誤，是失誤後回來得更快。</p>
+      </article>
+
+      <article class="pillar" data-anim="fade-up" data-delay="320" data-tilt>
+        <span class="pillar__no">05</span>
+        <div class="pillar__ico" aria-hidden="true">
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="26" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 38c4 6 20 6 24 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="24" cy="26" r="2.5" fill="currentColor"/><circle cx="40" cy="26" r="2.5" fill="currentColor"/></svg>
+        </div>
+        <h3>快樂</h3>
+        <p>如果不快樂，就不會持續。練到想放棄的時候，想一想第一次把球打漂亮的那個瞬間——那就是留下來的理由。</p>
+      </article>
+
+      <article class="pillar pillar--wide" data-anim="fade-up" data-delay="400">
+        <blockquote>
+          「<span>木球不會說謊</span>。你花多少時間，它就還你多少進步。<br />
+          <cite>— 陳定淳</cite>」
+        </blockquote>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 07 照片展示區 ============ -->
+<section class="sec sec--dark sec--pad" id="gallery">
+  <div class="sec__mesh" aria-hidden="true"></div>
+  <div class="wrap">
+    <header class="sec__head sec__head--light" data-anim="fade-up">
+      <p class="sec__idx"><b>06</b> / GALLERY</p>
+      <h2 class="sec__title">照片<span class="hl">展示</span>區</h2>
+      <p class="sec__lead">比賽現場、練習日常、隊友情誼。點擊照片可放大檢視。</p>
+    </header>
+
+    <div class="gal">
+      <figure class="gal__item" data-anim="fade-up" data-zoom>
+        <img src="assets/img/photo-01.svg" alt="比賽揮桿瞬間" loading="lazy" width="800" height="600" />
+        <figcaption><b>ACTION</b><span>比賽現場 · 揮桿</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="60" data-zoom>
+        <img src="assets/img/photo-02.svg" alt="社團練習" loading="lazy" width="800" height="600" />
+        <figcaption><b>PRACTICE</b><span>社團練習 · 日常</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="120" data-zoom>
+        <img src="assets/img/photo-03.svg" alt="全國賽事" loading="lazy" width="800" height="600" />
+        <figcaption><b>CHAMPIONSHIP</b><span>全國賽 · 全中運</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="180" data-zoom>
+        <img src="assets/img/photo-04.svg" alt="晨練" loading="lazy" width="800" height="600" />
+        <figcaption><b>SUNRISE</b><span>晨練 · 06:30</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="240" data-zoom>
+        <img src="assets/img/photo-05.svg" alt="隊伍合照" loading="lazy" width="800" height="600" />
+        <figcaption><b>TEAM</b><span>社團 · 隊伍合照</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="300" data-zoom>
+        <img src="assets/img/photo-06.svg" alt="球桿與球特寫" loading="lazy" width="800" height="600" />
+        <figcaption><b>EQUIPMENT</b><span>球桿 × 木球</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="360" data-zoom>
+        <img src="assets/img/photo-07.svg" alt="決賽畫面" loading="lazy" width="800" height="600" />
+        <figcaption><b>FINAL ROUND</b><span>決賽 · 關鍵局</span></figcaption>
+      </figure>
+      <figure class="gal__item" data-anim="fade-up" data-delay="420" data-zoom>
+        <img src="assets/img/photo-08.svg" alt="訓練營" loading="lazy" width="800" height="600" />
+        <figcaption><b>CAMP</b><span>暑期 · 訓練營</span></figcaption>
+      </figure>
+    </div>
+
+    <p class="gal__hint" data-anim="fade-up">※ 目前為示意圖。請於 <code>assets/img/</code> 內替換為自己的照片檔（建議 jpg / webp，寬度 ≥ 1200px）。</p>
+  </div>
+</section>
+
+<!-- ============ 08 個人介紹 ============ -->
+<section class="sec sec--light" id="about">
+  <div class="wrap">
+    <header class="sec__head" data-anim="fade-up">
+      <p class="sec__idx"><b>07</b> / ABOUT ME</p>
+      <h2 class="sec__title">個人<span class="hl">介紹</span></h2>
+    </header>
+
+    <div class="me">
+      <div class="me__pic" data-anim="fade-up" data-tilt>
+        <div class="me__frame">
+          <img src="assets/img/portrait.svg" alt="陳定淳 個人照" loading="lazy" width="800" height="600" />
+          <div class="me__tape">PLAYER</div>
+          <div class="me__num">07</div>
+        </div>
+        <div class="me__nameplate">
+          <b>陳定淳</b>
+          <span>CHEN DING-CHUN · WOODBALL PLAYER / CLUB PRESIDENT</span>
+        </div>
+      </div>
+
+      <div class="me__body">
+        <p class="me__lead" data-anim="fade-up">Hi，我是一名木球選手，也是木球社的社長。</p>
+        <p data-anim="fade-up" data-delay="60">
+          從高一第一次拿球桿開始，木球就變成我生活裡最穩定的一件事。訓練、比賽、當幹部、帶學弟妹，一個接一個，現在變成了我認識自己的方式。
+        </p>
+        <p data-anim="fade-up" data-delay="120">
+          我喜歡木球，因為它把「努力」這件事變得非常具體。你今天多練五十球，比賽時就可能多推進一公尺。也因為這樣，我學會不找藉口、不講運氣，只談準備。
+        </p>
+        <p data-anim="fade-up" data-delay="180">
+          除了球場，我也喜歡把過程記錄下來：寫訓練日誌、做網頁與工具、整理比賽數據。這個網站就是其中之一。
+        </p>
+
+        <ul class="me__facts" data-anim="fade-up" data-delay="240">
+          <li><span>NAME</span><b>陳定淳 Chen Ding-Chun</b></li>
+          <li><span>ROLE</span><b>木球社社長 / 全中運選手</b></li>
+          <li><span>SPECIALTY</span><b>個人全能 · 內角推桿</b></li>
+          <li><span>BEST RECORD</span><b>全中運全國第 2 名</b></li>
+          <li><span>HOBBY</span><b>慢動作分析 / 網頁開發</b></li>
+          <li><span>MANTO</span><b>專注 · 堅持 · 尊重</b></li>
+        </ul>
+
+        <div class="me__skills" data-anim="fade-up" data-delay="300">
+          <div class="skill"><span>SHORT DRIVE</span><div class="bar"><i data-bar="90"></i></div><b>90</b></div>
+          <div class="skill"><span>LONG DRIVE</span><div class="bar"><i data-bar="82"></i></div><b>82</b></div>
+          <div class="skill"><span>ANGLE CONTROL</span><div class="bar"><i data-bar="88"></i></div><b>88</b></div>
+          <div class="skill"><span>MENTAL</span><div class="bar"><i data-bar="95"></i></div><b>95</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 社群連結 ============ -->
+<section class="sec sec--gold sec--pad" id="links">
+  <div class="wrap">
+    <header class="sec__head sec__head--dark" data-anim="fade-up">
+      <p class="sec__idx"><b>08</b> / CONNECT</p>
+      <h2 class="sec__title">INSTAGRAM / <span class="hl hl--ink">GITHUB</span></h2>
+      <p class="sec__lead">追蹤日常訓練、比賽照片；或是看看我把什麼程式碼寫上去了。</p>
+    </header>
+
+    <div class="soc">
+      <a class="soc__card" href="https://github.com/Ding970215" target="_blank" rel="noopener noreferrer" data-anim="fade-up" data-magnetic>
+        <div class="soc__top"><span>01</span><i class="soc__arrow" aria-hidden="true">↗</i></div>
+        <svg class="soc__ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.38-3.88-1.38-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.69 5.4-5.26 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        <b>GITHUB</b>
+        <span>@Ding970215</span>
+        <p>網頁開發、自動化工具、訓練數據分析相關專案。</p>
+      </a>
+
+      <a class="soc__card" href="https://www.instagram.com/ding970215" target="_blank" rel="noopener noreferrer" data-anim="fade-up" data-delay="100" data-magnetic>
+        <div class="soc__top"><span>02</span><i class="soc__arrow" aria-hidden="true">↗</i></div>
+        <svg class="soc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <b>INSTAGRAM</b>
+        <span>@ding970215</span>
+        <p>比賽日、訓練日常、社團活動紀錄。</p>
+      </a>
+
+      <a class="soc__card" href="https://github.com/Ding970215" target="_blank" rel="noopener noreferrer" data-anim="fade-up" data-delay="200" data-magnetic>
+        <div class="soc__top"><span>03</span><i class="soc__arrow" aria-hidden="true">↗</i></div>
+        <svg class="soc__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H18a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6.5A2.5 2.5 0 0 1 4 18.5Z"/><path d="M4 7l8 6 8-6"/></svg>
+        <b>EMAIL</b>
+        <span>透過 GitHub 聯絡</span>
+        <p>合作邀約、媒體報導、社團活動請隨時聯繫。</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 10 FOOTER ============ -->
+<footer class="footer">
+  <div class="footer__stripes" aria-hidden="true"></div>
+  <div class="wrap footer__wrap">
+    <div class="footer__brand">
+      <div class="footer__logo">DC<span>WOODBALL</span></div>
+      <p>以美式競技的強度，對待每一場木球。</p>
+    </div>
+
+    <nav class="footer__nav" aria-label="頁尾選單">
+      <a href="#home">HOME</a>
+      <a href="#woodball">WOODBALL</a>
+      <a href="#president">PRESIDENT</a>
+      <a href="#games">NATIONAL GAMES</a>
+      <a href="#records">RECORDS</a>
+      <a href="#spirit">SPIRIT</a>
+      <a href="#gallery">GALLERY</a>
+      <a href="#about">ABOUT</a>
+    </nav>
+
+    <div class="footer__social">
+      <a href="https://github.com/Ding970215" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.instagram.com/ding970215" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
+  </div>
+
+  <div class="wrap footer__bottom">
+    <p>© <span id="year">2026</span> DC WOODBALL. ALL RIGHTS RESERVED.</p>
+    <p class="footer__made">DESIGNED &amp; BUILT BY 陳定淳 · <a href="https://github.com/Ding970215" target="_blank" rel="noopener noreferrer">@Ding970215</a> · HTML / CSS / JS</p>
+  </div>
+
+  <div class="footer__big" aria-hidden="true">DC WOODBALL</div>
+</footer>
+
+<!-- lightbox -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="照片檢視" hidden>
+  <button class="lb__close" id="lbClose" aria-label="關閉">✕</button>
+  <button class="lb__nav lb__nav--prev" id="lbPrev" aria-label="上一張">‹</button>
+  <figure class="lb__fig">
+    <img id="lbImg" src="" alt="" />
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lb__nav lb__nav--next" id="lbNext" aria-label="下一張">›</button>
+</div>
+
+<button class="to-top" id="toTop" aria-label="回到頂端">↑<span>TOP</span></button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

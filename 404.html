@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>404｜DC WOODBALL</title>
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;600&family=Inter:wght@400;600&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{--ink:#0a0a0b;--paper:#f6f4f0;--gold:#c9a227;--gold-hot:#ffd75e}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:var(--ink);color:var(--paper);min-height:100svh;
+    display:grid;place-items:center;padding:24px;position:relative;overflow:hidden;
+    font-family:Inter,'Noto Sans TC',sans-serif;
+  }
+  body::before{
+    content:'';position:absolute;inset:0;
+    background:repeating-linear-gradient(112deg,transparent 0 26px,rgba(201,162,39,.05) 26px 52px);
+  }
+  body::after{
+    content:'';position:absolute;inset:0;pointer-events:none;opacity:.25;
+    background-image:radial-gradient(rgba(246,244,240,.5) 1px,transparent 1.4px);
+    background-size:6px 6px;
+    mask-image:linear-gradient(115deg,transparent 40%,#000);
+    -webkit-mask-image:linear-gradient(115deg,transparent 40%,#000);
+  }
+  .box{position:relative;z-index:2;text-align:center;max-width:640px}
+  .code{
+    font-family:Anton,Impact,sans-serif;font-size:clamp(6rem,26vw,15rem);line-height:.84;
+    background:linear-gradient(130deg,#fff 0%,#cbc5ba 55%,#6f6a61 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    transform:skewX(-8deg);letter-spacing:-.02em;
+  }
+  .bar{width:120px;height:6px;background:var(--gold);margin:22px auto 20px}
+  h1{font-family:Oswald,sans-serif;font-size:clamp(1.1rem,3.6vw,1.7rem);font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+  h1 em{font-style:normal;color:var(--gold-hot)}
+  p{color:rgba(246,244,240,.6);font-size:.94rem;line-height:1.8;margin:14px auto 30px;max-width:42ch}
+  .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  a.btn{
+    font-family:Oswald,sans-serif;font-size:.86rem;font-weight:600;letter-spacing:.16em;
+    padding:14px 30px;border:2px solid var(--gold);color:var(--paper);
+    text-decoration:none;transition:.3s;
+  }
+  a.btn--fill{background:linear-gradient(120deg,var(--gold-hot),var(--gold));color:var(--ink)}
+  a.btn:hover{background:var(--gold);color:var(--ink);transform:translateY(-3px)}
+  .tape{
+    display:inline-block;margin-bottom:22px;
+    font-family:Oswald,sans-serif;font-size:10.5px;letter-spacing:.42em;
+    background:var(--gold);color:var(--ink);padding:6px 12px;transform:rotate(-3deg);
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    <span class="tape">OUT OF BOUNDS</span>
+    <div class="code">404</div>
+    <div class="bar"></div>
+    <h1>BALL OUT OF <em>BOUNDS</em></h1>
+    <p>這一頁不在場地裡面。回到主場，重新開球。</p>
+    <div class="btns">
+      <a class="btn btn--fill" href="/">回到首頁</a>
+      <a class="btn" href="/index.html">HOME</a>
+    </div>
+  </div>
+</body>
+</html>

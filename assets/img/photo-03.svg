@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="NATIONAL GAMES">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1a1a26"/>
+      <stop offset="1" stop-color="#0a0a0f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.7" cy="0.25" r="0.8">
+      <stop offset="0" stop-color="#ffd75e" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#ffd75e" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="1.6" fill="#f6f4f0" fill-opacity="0.07"/>
+    </pattern>
+  <filter id="n" x="0" y="0">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <rect width="800" height="600" fill="url(#dots)"/>
+  <rect width="800" height="600" fill="url(#glow)"/>
+
+  <!-- diagonal athletic stripes -->
+  <g opacity="0.5">
+    <path d="M-120 600 L260 -40 L360 -40 L-20 600 Z" fill="#f6f4f0" fill-opacity="0.05"/>
+    <path d="M60 600 L440 -40 L500 -40 L120 600 Z" fill="#ffd75e" fill-opacity="0.10"/>
+    <path d="M300 600 L680 -40 L740 -40 L360 600 Z" fill="#f6f4f0" fill-opacity="0.04"/>
+  </g>
+
+  <!-- woodball pins triangle (woodball has no pins; used as athletic triangle motif) -->
+  <g stroke="#ffd75e" stroke-opacity="0.5" fill="none" stroke-width="2">
+    <path d="M400 250 L470 350 L330 350 Z"/>
+  </g>
+  <g fill="#f6f4f0" fill-opacity="0.85">
+    <circle cx="400" cy="238" r="9"/>
+    <circle cx="360" cy="292" r="9"/>
+    <circle cx="440" cy="292" r="9"/>
+    <circle cx="330" cy="352" r="9"/>
+    <circle cx="370" cy="352" r="9"/>
+    <circle cx="410" cy="352" r="9"/>
+    <circle cx="450" cy="352" r="9"/>
+  </g>
+
+  <!-- frame -->
+  <rect x="14" y="14" width="772" height="572" fill="none" stroke="#f6f4f0" stroke-opacity="0.18" stroke-width="2"/>
+
+  <!-- caption block -->
+  <g font-family="Oswald, 'Arial Narrow', Arial, sans-serif">
+    <text x="34" y="60" fill="#f6f4f0" font-size="34" font-weight="700" letter-spacing="3">03</text>
+    <line x1="34" y1="76" x2="120" y2="76" stroke="#ffd75e" stroke-width="4"/>
+    <text x="34" y="536" fill="#f6f4f0" font-size="30" font-weight="700" letter-spacing="4">NATIONAL GAMES</text>
+    <text x="34" y="566" fill="#f6f4f0" fill-opacity="0.6" font-size="17" letter-spacing="3">CHAMPIONSHIP</text>
+  </g>
+
+  <!-- crosshair -->
+  <g stroke="#ffd75e" stroke-opacity="0.65" stroke-width="2">
+    <path d="M400 200 v40 M400 360 v40 M340 300 h40 M420 300 h40"/>
+  </g>
+
+  <rect width="800" height="600" filter="url(#n)" opacity="0.10" style="mix-blend-mode:overlay"/>
+</svg>
